@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'dj_auth.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'skomals1987$default',
-        'USER': 'skomals1987',
-        'PASSWORD': 'djangoauth123',
-        'HOST': 'skomals1987.mysql.pythonanywhere-services.com',
+        'NAME': env('DEBUG'),
+        'USER': env('MYSQL_USR'),
+        'PASSWORD': env('MYSQL_PASSWORD'),
+        'HOST': env('MYSQL_HOST'),
     }
 }
 

@@ -84,8 +84,11 @@ WSGI_APPLICATION = 'dj_auth.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'dj_auth.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'skomals1987$default',
+        'USER': 'skomals1987',
+        'PASSWORD': 'djangoauth123',
+        'HOST': 'skomals1987.mysql.pythonanywhere-services.com',
     }
 }
 

@@ -81,11 +81,10 @@ WSGI_APPLICATION = 'dj_auth.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('DEBUG'),
+        'NAME': env('MYSQL_DATABASE'),
         'USER': env('MYSQL_USR'),
         'PASSWORD': env('MYSQL_PASSWORD'),
         'HOST': env('MYSQL_HOST'),

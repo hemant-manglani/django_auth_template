@@ -51,9 +51,14 @@
     <div class="row">
         {% block start %}
         {% if user.is_authenticated %}
-        <center><h1>welcome back {{user.username}}!</h1></center>
+        <center><h1>welcome back {{user.username}}!</h1>
+          <a href={% url 'logout' %}>Logout</a>
+        </center>
         {% else %}
-        <center><h1>log in, plz . . .</h1></center>
+        <center><h1>You are not authorized.</h1>
+          <a href={% url 'login' %}>Login</a>
+        </center>
+      
         {% endif %}
         {% endblock %}
       </div>

@@ -7,15 +7,15 @@ from .forms import UserRegisterForm
 from django.template.loader import get_template
 from django.template import Context
 from users.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
 import re
-# as per recommendation from @freylis, compile once only
 
 CLEANR = re.compile('<.*?>') 
 
 def cleanhtml(raw_html):
   cleantext = re.sub(CLEANR, '', raw_html)
   return cleantext
-
 
 
 def index(request):
@@ -53,3 +53,9 @@ def Login(request):
             messages.info(request, f'Invalid Credentails')
     form = AuthenticationForm()
     return render(request, 'login.html', {'form':form, 'title':'log in'})
+
+
+# logout Page
+def log_out(request):
+    logout(request)
+    return HttpResponseRedirect('/')

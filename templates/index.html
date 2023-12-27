@@ -52,7 +52,11 @@
         {% block start %}
         {% if user.is_authenticated %}
         <center><h1>welcome back {{user.username}}!</h1>
-          <a href={% url 'logout' %}>Logout</a>
+            <a href={% url 'add_profile' %}>Add Candidate</a>
+            <a href={% url 'show_profile' %}>View Candidate</a>
+            <br>
+            <br>
+            <a href={% url 'logout' %}>Logout</a>
         </center>
         {% else %}
         <center><h1>You are not authorized.</h1>

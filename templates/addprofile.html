@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Profile</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+
+
+<body>
+<form method="POST" class="post-form" action="/addprofile/">
+        {% csrf_token %}
+    <div class="container">
+    <br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Enter Details</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Candidate First Name</label>
+    <div class="col-sm-4">
+      {{ form.candidate_fname }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Candidate Last Name:</label>
+    <div class="col-sm-4">
+      {{ form.candidate_lname }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Candidate Email:</label>
+    <div class="col-sm-4">
+      {{ form.candidate_email }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Candidate Phone Number:</label>
+    <div class="col-sm-4">
+      {{ form.candidate_phone }}
+    </div>
+  </div>
+   <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Profile Heading:</label>
+    <div class="col-sm-4">
+      {{ form.profile_heading }}
+    </div>
+  </div>
+   <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Linkedin URL</label>
+    <div class="col-sm-4">
+      {{ form.linkedin_url }}
+    </div>
+  </div>
+  <!--fields = ['candidate_fname', 'candidate_lname', 'candidate_email', 'candidate_phone', 'profile_heading', 'linkedin_url',
+'skillset_1', 'skillset_2', 'skillset_3','skillset_4','skillset_5', 'experience_years','experience_months',
+'current_location','prefered_location', 'notice_period']-->
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Skiil Set 1</label>
+    <div class="col-sm-4">
+      {{ form.skillset_1 }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Skiil Set 2</label>
+    <div class="col-sm-4">
+      {{ form.skillset_2 }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Skiil Set 3</label>
+    <div class="col-sm-4">
+      {{ form.skillset_3 }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Skiil Set 4</label>
+    <div class="col-sm-4">
+      {{ form.skillset_4 }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Skiil Set 5</label>
+    <div class="col-sm-4">
+      {{ form.skillset_5 }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Experience in years</label>
+    <div class="col-sm-4">
+      {{ form.experience_years }}
+    </div>
+  </div>
+   <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Additional Experience in Months</label>
+    <div class="col-sm-4">
+      {{ form.experience_months }}
+    </div>
+  </div>
+   <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Current Location</label>
+    <div class="col-sm-4">
+      {{ form.current_location }}
+    </div>
+  </div>
+   <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Prefered Location</label>
+    <div class="col-sm-4">
+      {{ form.prefered_location }}
+    </div>
+  </div>
+   <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Notice Period (In Days)</label>
+    <div class="col-sm-4">
+      {{ form.notice_period }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+    </div>
+</form>
+</body>

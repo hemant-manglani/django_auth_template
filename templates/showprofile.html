@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate Records</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Company Name</th>
+        <th>Contact Person Nme</th>
+        <th>Contact Email</th>
+        <th>Contact Number</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for profile in addprofile %}
+<!--fields = ['candidate_fname', 'candidate_lname', 'candidate_email', 'candidate_phone', 'profile_heading', 'linkedin_url','skillset_1', 'skillset_2',
+'skillset_3','skillset_4','skillset_5', 'experience_years','experience_months', 'current_location','prefered_location', 'notice_period']-->
+    <tr>
+        <td>{{ profile.candidate_fname }}</td>
+        <td>{{ profile.candidate_lname }}</td>
+        <td>{{ profile.candidate_email }}</td>
+        <td>{{ profile.candidate_phone }}</td>
+        <td>{{ profile.profile_heading }}</td>
+        <td>{{ profile.linkedin_url }}</td>
+        <td>{{ profile.skillset_1 }}</td>
+        <td>{{ profile.skillset_2 }}</td>
+        <td>{{ profile.skillset_3 }}</td>
+        <td>{{ profile.skillset_4 }}</td>
+        <td>{{ profile.skillset_5 }}</td>
+        <td>{{ profile.experience_years }}</td>
+        <td>{{ profile.experience_months }}</td>
+        <td>{{ profile.current_location }}</td>
+        <td>{{ profile.prefered_location }}</td>
+        <td>{{ profile.notice_period }}</td>
+        <td>
+            <a href="/editprofile/{{ profile.id }}/"><span class="glyphicon glyphicon-pencil" >Edit Profile</span></a>
+            <a href="/deleteprofile/{{ profile.id }}">Delete</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/addprofile" class="btn btn-primary">Add New Record</a></center>
+</body>
+</html>

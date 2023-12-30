@@ -141,7 +141,7 @@ class JobPosting(models.Model):
         blank=True
     )
     notice_period = models.IntegerField(blank=True)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_by', blank=True,
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='job_created_by', blank=True,
                                 null=True)
     is_deleted = models.BooleanField(default=False)
 

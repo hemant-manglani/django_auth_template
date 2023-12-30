@@ -10,7 +10,8 @@ from users.models import User, Profile
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 import re
-from .forms import UserRegisterForm, AddProfileForm, UpdateProfileForm, AddJobPostingForm
+# from .forms import UserRegisterForm, AddProfileForm, UpdateProfileForm, AddJobPostingForm
+from .forms import UserRegisterForm, AddProfileForm, UpdateProfileForm
 from django.core.exceptions import ValidationError
 
 CLEANR = re.compile('<.*?>')
@@ -179,39 +180,39 @@ def add_jobposting(request):
         return render(request, 'addprofile.html', {'form': form})
 
 
-@login_required
-def show_jobposting(request):
-    user = User.objects.get(id=request.user.pk)
-
-    if user.is_admin:
-        profiles = Profile.objects.filter(is_deleted=False).all()
-    else:
-        profiles = Profile.objects.filter(created_by=request.user.pk, is_deleted=False).all()
-
-    return render(request, 'showprofile.html', {'addprofile': profiles})
-
-
-@login_required
-def edit_jobposting(request, profile_id):
-    if request.method == "POST":
-        profiles = Profile.objects.get(id=int(profile_id))
-        p_form = UpdateProfileForm(request.POST, instance=profiles)
-        if p_form.is_valid():
-            p_form.save()
-            return redirect('/showprofile')
-            messages.info(request, f'Update Success')
-
-    profiles = Profile.objects.get(id=int(profile_id))
-    p_form = UpdateProfileForm(instance=profiles)
-
-    return render(request, 'editprofile.html', {'form': p_form, "profile_id": profile_id})
-
-
-@login_required
-def delete_jobposting(request, profile_id):
-    try:
-        Profile.objects.filter(id=int(profile_id)).update(is_deleted=True)
-    except:
-        messages.info(request, f'Not able to delete.')
-
-    return redirect('/showprofile')
+# @login_required
+# def show_jobposting(request):
+#     user = User.objects.get(id=request.user.pk)
+#
+#     if user.is_admin:
+#         profiles = Profile.objects.filter(is_deleted=False).all()
+#     else:
+#         profiles = Profile.objects.filter(created_by=request.user.pk, is_deleted=False).all()
+#
+#     return render(request, 'showprofile.html', {'addprofile': profiles})
+#
+#
+# @login_required
+# def edit_jobposting(request, profile_id):
+#     if request.method == "POST":
+#         profiles = Profile.objects.get(id=int(profile_id))
+#         p_form = UpdateProfileForm(request.POST, instance=profiles)
+#         if p_form.is_valid():
+#             p_form.save()
+#             return redirect('/showprofile')
+#             messages.info(request, f'Update Success')
+#
+#     profiles = Profile.objects.get(id=int(profile_id))
+#     p_form = UpdateProfileForm(instance=profiles)
+#
+#     return render(request, 'editprofile.html', {'form': p_form, "profile_id": profile_id})
+#
+#
+# @login_required
+# def delete_jobposting(request, profile_id):
+#     try:
+#         Profile.objects.filter(id=int(profile_id)).update(is_deleted=True)
+#     except:
+#         messages.info(request, f'Not able to delete.')
+#
+#     return redirect('/showprofile')

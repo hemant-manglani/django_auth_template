@@ -1,11 +1,11 @@
 from django.contrib.auth.models import AbstractUser
-#from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext as _
 
 
 class User(AbstractUser):
-#class User(User):
+    # class User(User):
     is_admin = models.BooleanField()
     USERNAME_FIELD = 'email'
     email = models.EmailField(_('email address'), unique=True)
@@ -76,9 +76,10 @@ class Profile(models.Model):
     class Meta:
         db_table = "candidate_details"
 
+
 class JobPosting(models.Model):
     job_heading = models.CharField(max_length=1000, blank=False)
-    job_description = models.TextField(max_length=5000,blank=False)
+    job_description = models.TextField(max_length=5000, blank=False)
     job_owner = models.CharField(max_length=200, blank=False)
     job_owner_email = models.EmailField()
     level1_interviewer = models.CharField(max_length=200, blank=True)
@@ -141,7 +142,7 @@ class JobPosting(models.Model):
     )
     notice_period = models.IntegerField(blank=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_by', blank=True,
-                                   null=True)
+                                null=True)
     is_deleted = models.BooleanField(default=False)
 
     class Meta:

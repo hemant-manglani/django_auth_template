@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-# from users.models import User, Profile, JobPosting
-from users.models import User, Profile
+from users.models import User, Profile, JobPosting
 
 
 class UserRegisterForm(UserCreationForm):
@@ -33,14 +32,13 @@ class UpdateProfileForm(forms.ModelForm):
                   'notice_period']
 
 # Job Postings
+class AddJobPostingForm(forms.ModelForm):
+    class Meta:
+        model = JobPosting
+        exclude = ('creator', 'is_deleted')
 
-# class AddJobPostingForm(forms.ModelForm):
-#     class Meta:
-#         model = JobPosting
-#         exclude = ('creator', 'is_deleted')
-#
-#         fields =  ['job_heading', 'job_description', 'job_owner', 'job_owner_email', 'level1_interviewer',
-#                 'level1_interviewer_email','level2_interviewer','level2_interviewer_email','level3_interviewer',
-#                 'level3_interviewer_email','hr_approver','hr_approver_email','linkedin_url', 'skillset_1', 'skillset_2',
-#                 'skillset_3', 'skillset_4', 'skillset_5','experience_years', 'experience_months', 'prefered_location1',
-#                 'prefered_location2','notice_period']
+        fields =  ['job_heading', 'job_description', 'job_owner', 'job_owner_email', 'level1_interviewer',
+                'level1_interviewer_email','level2_interviewer','level2_interviewer_email','level3_interviewer',
+                'level3_interviewer_email','hr_approver','hr_approver_email','linkedin_url', 'skillset_1', 'skillset_2',
+                'skillset_3', 'skillset_4', 'skillset_5','experience_years', 'experience_months', 'prefered_location1',
+                'prefered_location2','notice_period']
